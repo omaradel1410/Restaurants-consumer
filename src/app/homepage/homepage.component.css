@@ -1,0 +1,50 @@
+.table-number {
+  box-shadow: 0 27px 55px 0 rgb(0 0 0 / 30%), 0 17px 17px 0 rgb(0 0 0 / 15%);
+  overflow: auto;
+  border-radius: 2% !important;
+}
+
+.table-number .head {
+  background-color: #ffbc0d;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.table-number input {
+  border: none;
+  background: #e8ebed;
+  color: #576366;
+  outline: none !important;
+}
+
+.table-number .btn {
+  float: right;
+  margin: 0px 25px 15px;
+}
+
+
+
+@media screen and (max-width:576px) {
+
+  .info h3 {
+    font-size: 1.5rem;
+  }
+
+  .table-number {
+    width: 50% !important;
+  }
+
+  .head h5 {
+    font-size: .9rem;
+  }
+
+  .table-number input {
+    font-size: .8rem;
+  }
+
+  .table-number .btn {
+    font-size: .8rem;
+  }
+
+}

@@ -1,0 +1,71 @@
+<section id="header top-nav">
+  <div class="top-header ">
+    <div class="container-fluid  ">
+      <div class="row top-nav">
+
+        <div class="col-md-2">
+          <div class="logo">
+            <img src="../../assets/mcdonalds.png" alt="">
+          </div>
+        </div>
+
+        <div class="col-md-8 mt-2">
+          <nav>
+            <ul class="navbar-nav collapse navbar-collapse" id="navbarSupportedContent">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false"><i class="fas fa-american-sign-language-interpreting"></i> English</a>
+                <div class="dropdown-menu " aria-labelledby="dropdownId">
+                  <a class="dropdown-item text-light" href="#">English</a>
+                  <a class="dropdown-item text-light" href="#">Arabic</a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="list-shop ml-auto mx-5 ">
+          <button id="shopId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            class="cart-btn rounded"> <span class="count">0</span>
+            <i class="fas fa-shopping-bag mt-2 pr-1"></i>
+          </button>
+          <div class="dropdown-menu menu-list" aria-labelledby="shopId">
+            <p> <span class="font-weight-bold">Total </span> 0 SAR</p>
+            <BUtton class="btn btn-warning text-light px-5 font-weight-bold">checkout</BUtton>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="info my-5">
+          <h3>ENTER TABLE NUMBER</h3>
+          <div class="line"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="container test my-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-number test m-auto w-75">
+
+        <form [formGroup]='table' (ngSubmit)='getFormData(table)' class=" m-auto">
+          <div class="head">
+            <h5 class="pt-2">Please Enter Number of Table</h5>
+          </div>
+
+          <div class="form-group p-4">
+            <input formControlName='tableNumber' type="number" class="form-control p-4" placeholder="Enter Number">
+          </div>
+
+          <button class="btn btn-warning text-light px-3 ">Register</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+footer {
+  background-color: rgb(0 0 0 / 30%);
+  height: 30vh;
+  margin-top: 25px;
+}
+
+footer img {
+  width: 60px;
+}
+
+footer p {
+  font-size: 1rem;
+  color: #989898;
+  font-weight: 700;
+}
+
+footer .social {
+  float: right;
+}
+
+footer .social .nav-link {
+  color: white;
+}
+
+@media screen and (max-width:768px) {
+
+  .copy-right p {
+    text-align: center !important;
+  }
+
+  footer img {
+    margin: 5px 0px;
+  }
+
+  .social {
+    float: none !important;
+    justify-content: center;
+    padding: 0px !important;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+
+
+
+}

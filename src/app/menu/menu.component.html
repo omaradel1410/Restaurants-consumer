@@ -1,0 +1,183 @@
+<section id="header">
+  <div class="container-fluid ">
+    <div class="row top-nav fixed-top">
+
+      <!----------------------------- LOGO ---------------------- -->
+      <div class="col-md-2">
+        <div class="logo">
+          <img src="../../assets/mcdonalds.png" alt="">
+        </div>
+      </div>
+
+      <!---------------------------- NAVBAR ----------------------- -->
+      <div class=" col-md-8 mt-2">
+        <nav>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><i class="fas fa-american-sign-language-interpreting"></i> English</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownId">
+                <a class="dropdown-item text-light" href="#">English</a>
+                <a class="dropdown-item text-light" href="#">Arabic</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink='/homepage' href="#"><i class="fas fa-edit"></i> UPDATE TABLE</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!--------------------- basket -------------------- -->
+      <div class="list-shop ml-auto mx-4">
+        <button id="shopId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="cart-btn rounded">
+          <span class="count"> {{itemcount}} </span>
+          <i class="fas fa-shopping-bag mt-2 pr-1"></i>
+        </button>
+
+        <div class="dropdown-menu menu-list text-center" aria-labelledby="shopId">
+
+          <img class="w-50 mb-3" [src]="list.image" alt="">
+
+          <div class="name">
+            <h6 class="font-weight-bold"> {{list.name}} </h6>
+            <h6 *ngIf='list.price'> {{list.price}} SAR </h6>
+            <p class="font-weight-bold text-muted mx-3">Amount : {{list.quantity}} </p>
+          </div>
+
+          <hr>
+
+          <h6 class="font-weight-bold" *ngIf='total'>Total : <span class="text-muted"> {{total}} SAR</span> </h6>
+          <span *ngIf='!total' class="text-muted font-weight-bold">Total : 0 SAR</span>
+
+          <BUtton (click)='check()' class="btn btn-warning text-light px-4 font-weight-bold mt-2 d-block">checkout
+          </BUtton>
+        </div>
+      </div>
+    </div>
+
+    <div class="container my-5">
+      <div class="row">
+        <div class="info">
+          <h3>MENU</h3>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--------------------------- MENU & CATEGORIES  -------------------------->
+<section id="menu">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-3 ">
+        <!-- <div class="search position-relative mt-5">
+          <input type="search" class="form-control w-100 p-4 font-weight-bold" placeholder="Search... ">
+          <div class="iconSearch">
+            <i class="fas fa-search"></i>
+          </div>
+        </div> -->
+
+        <div class="category">
+          <h4 class="mt-4">CATEGORIES</h4>
+          <div class="line mb-4"></div>
+        </div>
+
+        <!-- ---------------------- category -------------------- -->
+        <div class="accordion" id="accordionExample">
+          <div *ngFor='let cat of category' class="card2">
+            <div class="card-header">
+              <h2 class="mb-0">
+                <button (click)='menu(cat.id)' class="btn  btn-link btn-block text-left" type="button">
+                  {{cat.name}}
+                  <span class="float-right">{{cat.items.length}}</span>
+                </button>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <!-- ---------------------- /category -------------------- -->
+      </div>
+
+      <div class="col-md-1"></div>
+
+
+      <div class="col-md-8 text-center">
+        <!-- ------------------- default first name of menu -------------->
+        <div *ngIf='isChange' class="category">
+          <h6> {{ one }} </h6>
+          <div class="line"></div>
+        </div>
+        <!-- ------------------- /default first name of menu -------------->
+
+
+        <div *ngIf='!isChange' class="category">
+          <h6> {{name}} </h6>
+          <div class="line"></div>
+        </div>
+
+        <!-- ----------------------------- display first of menu by default ----------------------------->
+        <div *ngIf='isChange' class="row">
+          <div *ngFor='let item of categoryOne' class="col-md-6 col-sm-12 mb-5">
+            <div class="item">
+              <div class="card p-3">
+                <img [src]=" item.image " class="card-img-top" alt="">
+
+                <div class="card-body">
+                  <h4 class="card-title font-weight-bolder"> {{ item.name }} </h4>
+                  <p class="card-text text-muted"> <span class=" mx-2">{{ item.price }} </span>
+                    Plus Tax
+                  </p>
+
+                  <div class="mb-3 w-100 d-flex justify-content-center ">
+                    <button (click)='removeOne(item)' class="btn btn-outline-danger minus "><i class="fa fa-minus"></i>
+                    </button>
+
+                    <input [value]="item.quantity" type="number" disabled="true" class=" text-center py-1">
+
+                    <button (click)='addOne(item)' class="btn btn-outline-info  "><i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                  <button (click)='btnAddItem(item);addOrder()' class="btn btn-outline-warning mt-3">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ----------------------------- /display first of menu by default ----------------------------->
+
+        <div class="row">
+          <div *ngFor='let item of menuItem' class="col-md-6 col-sm-12 mb-5">
+            <div class="item">
+              <div class="card p-3">
+                <img [src]="item.image" class="card-img-top" alt="">
+
+                <div class="card-body">
+                  <h4 class="card-title font-weight-bolder"> {{item.name}} </h4>
+                  <p class="card-text text-muted"> <span class=" mx-2">{{item.price}} </span>
+                    Plus Tax
+                  </p>
+
+                  <div class=" mb-3 w-100 d-flex justify-content-center">
+                    <button (click)='removeOne(item)' class="btn btn-outline-danger minus "><i class="fa fa-minus"></i>
+                    </button>
+
+                    <input [value]="item.quantity" type="number" disabled="true" class=" text-center py-1">
+
+                    <button (click)='addOne(item)' class="btn btn-outline-info  "><i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+
+                  <button (click)='btnAddItem(item);addOrder()' class="btn btn-outline-warning mt-3">Add</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
